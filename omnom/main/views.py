@@ -27,3 +27,5 @@ def get_pic_url(request):
     picurl = "https://graph.facebook.com/%s/picture" % request.user.username
     return render_to_response("person.html", {'picurl':picurl})
 
+def msg_confirmation(request):
+	  return render_to_response("msg_confirmation.html")
