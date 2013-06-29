@@ -13,3 +13,6 @@ def actions_confirm_request(request,request_id):
 
 def actions_pickup_request(request,request_id):
     return HttpResponse("Pickup Request Endpoint")
+
+def requests(request):
+	  return render_to_response("requests.html")
