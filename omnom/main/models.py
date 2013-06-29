@@ -7,7 +7,7 @@ class PickupRequest(models.Model):
     latitude = models.FloatField()
     longitude = models.FloatField()
     requester = models.ForeignKey(User,related_name="requests")
-    
+
     is_fulfilled = models.BooleanField(default=False)
     fulfilled_by = models.ForeignKey(User,related_name="fulfilled_requests")
     is_picked_up = models.BooleanField(default=False)
@@ -22,5 +22,5 @@ class Feedback(models.Model):
 
     rating = models.IntegerField()
     feedback = models.TextField()
-    
-    
+
+
