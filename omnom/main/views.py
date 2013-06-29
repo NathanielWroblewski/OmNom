@@ -1,4 +1,9 @@
 from django.http import HttpResponse
+from django.shortcuts import render_to_response
+from django.template import RequestContext
+
+def test_page(request):
+    return render_to_response("test-page.html",{'myvar':"OMNOM"},RequestContext(request))
 
 def actions_fulfill_request(request,request_id):
     return HttpResponse("Fulfill Request Endpoint")
