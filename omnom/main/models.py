@@ -24,6 +24,9 @@ class Feedback(models.Model):
     feedback = models.TextField()
 
 class UserProfile(models.Model):
-    phone_number = models.CharField(max_length=127)
     user = models.ForeignKey(User)
+    phone_number = models.CharField(max_length=127,null=True,blank=True)
     donater_description = models.TextField(null=True, blank=True) #not required
+
+
+from main.receivers import *
