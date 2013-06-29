@@ -120,6 +120,11 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'main',
     'south',
+    'social_auth',
+)
+
+AUTHENTICATION_BACKENDS = (
+    'social_auth.backends.facebook.FacebookBackend',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -150,3 +155,7 @@ LOGGING = {
         },
     }
 }
+
+FACEBOOK_APP_ID = '141334812733639'
+FACEBOOK_API_SECRET = 'ee346936bdc33641fb681468682417be'
+LOGIN_REDIRECT_URL = '/'
