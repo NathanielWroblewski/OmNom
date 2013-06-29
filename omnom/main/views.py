@@ -28,10 +28,10 @@ def actions_pickup_request(request,request_id):
     return HttpResponse("Pickup Request Endpoint")
 
 def home(request):
-	  return render_to_response("home.html")
+	return render_to_response("home.html")
 
 def donation_map(request):
-	  return render_to_response("donation_map.html")
+	return render_to_response("donation_map.html")
 
 def requests(request):
 	return render_to_response("requests.html")
@@ -41,4 +41,7 @@ def get_pic_url(request):
     return render_to_response("person.html", {'picurl':picurl})
 
 def msg_confirmation(request):
-	  return render_to_response("msg_confirmation.html")
+	return render_to_response("msg_confirmation.html")
+
+def direction_map(request):
+    return render_to_response("direction_map.html")

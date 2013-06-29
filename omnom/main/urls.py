@@ -10,5 +10,6 @@ urlpatterns = patterns('main.views',
                        url(r'^messenger/donation_map$', 'donation_map',name="donation_map"),
                        url(r'^requests/$', 'requests',name="requests"),
                        url(r'^person/$', 'get_pic_url',name="get_pic_url"),
+                       url(r'^messenger/direction_map$', 'direction_map',name="direction_map"),
                        url(r'^messenger/confirmation$', 'msg_confirmation',name="msg_confirmation"),
 )
