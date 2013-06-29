@@ -23,4 +23,7 @@ class Feedback(models.Model):
     rating = models.IntegerField()
     feedback = models.TextField()
 
-
+class UserProfile(models.Model):
+    phone_number = models.CharField(max_length=127)
+    user = models.ForeignKey(User)
+    donater_description = models.TextField(null=True, blank=True) #not required
