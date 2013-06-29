@@ -17,3 +17,7 @@ Interactive shell and query for users
 
 User Model in Django
 myenv/lib/python/site-packages/django/contrib/auth/models.py
+
+Schema Migration (if you update a model in main/models.py)
+-> python manage.py schemamigration main --auto
+-> python manage.py migrate
