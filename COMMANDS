@@ -1,0 +1,23 @@
+create a virtual environment, enter virtualenv, and install requirements
+-> virtualenv myenv
+-> source myenv/bin/activate
+-> pip install -r requirements.txt
+
+Initialize the sqlite db
+-> python manage.py syncdb
+-> python manage.py migrate
+
+Start a django server
+-> python manage.py runserver
+
+Interactive shell and query for users
+-> python manage.py shell
+-> >>> from django.contrib.auth.models import User 
+-> >>> all_users = User.objects.all()
+
+User Model in Django
+myenv/lib/python/site-packages/django/contrib/auth/models.py
+
+Schema Migration (if you update a model in main/models.py)
+-> python manage.py schemamigration main --auto
+-> python manage.py migrate
