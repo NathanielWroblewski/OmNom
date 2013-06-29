@@ -19,3 +19,11 @@ def home(request):
 
 def donation_map(request):
 	  return render_to_response("donation_map.html")
+
+def requests(request):
+	return render_to_response("requests.html")
+
+def get_pic_url(request):
+    picurl = "https://graph.facebook.com/%s/picture" % request.user.username
+    return render_to_response("person.html", {'picurl':picurl})
+
