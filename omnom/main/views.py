@@ -60,8 +60,7 @@ def actions_pickup_request(request,request_id):
     return HttpResponse("Pickup Request Endpoint")
 
 def home(request):
-
-    return render_to_response("home.html")
+    return render_to_response("home.html",RequestContext(request))
 
 def create_profile(request):
     if request.method == "POST":
@@ -79,23 +78,29 @@ def create_profile(request):
 
 
 def donation_map(request):
-	return render_to_response("donation_map.html")
+	return render_to_response("donation_map.html",RequestContext(request))
 
 def requests(request):
-	return render_to_response("requests.html")
+	return render_to_response("requests.html",RequestContext(request))
 
 def get_pic_url(request):
     picurl = "https://graph.facebook.com/%s/picture" % request.user.username
     return render_to_response("person.html", {'picurl':picurl})
 
 def msg_confirmation(request):
-	return render_to_response("msg_confirmation.html")
+	return render_to_response("msg_confirmation.html",RequestContext(request))
 
 def direction_map(request):
-    return render_to_response("direction_map.html")
+    return render_to_response("direction_map.html",RequestContext(request))
 
 def feedback(request):
-    return render_to_response("feedback.html")
+    return render_to_response("feedback.html",RequestContext(request))
 
 def picked_up(request):
-    return render_to_response("picked_up.html")
+    return render_to_response("picked_up.html",RequestContext(request))
+
+def sign_in(request):
+    return render_to_response("sign_in.html")
+
+def new_donation(request):
+    return render_to_response("new_donation")
