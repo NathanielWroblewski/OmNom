@@ -4,4 +4,5 @@ urlpatterns = patterns('main.views',
                        url(r'^actions/fulfill-request/(?P<request_id>[^/]+)/$', 'actions_fulfill_request',name="actions_fulfill_request"),
                        url(r'^actions/confirm-request/(?P<request_id>[^/]+)/$', 'actions_confirm_request',name="actions_confirm_request"),
                        url(r'^actions/pickup-request/(?P<request_id>[^/]+)/$', 'actions_pickup_request',name="actions_pickup_request"),
+                       url(r'^new_request/$', 'new',name="new"),
 )
