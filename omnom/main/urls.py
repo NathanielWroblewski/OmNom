@@ -12,4 +12,6 @@ urlpatterns = patterns('main.views',
                        url(r'^person/$', 'get_pic_url',name="get_pic_url"),
                        url(r'^messenger/direction_map$', 'direction_map',name="direction_map"),
                        url(r'^messenger/confirmation$', 'msg_confirmation',name="msg_confirmation"),
+                       url(r'^messenger/feedback$', 'feedback',name="feedback"),
+                       url(r'^messenger/picked_up$', 'picked_up',name="picked_up"),
 )

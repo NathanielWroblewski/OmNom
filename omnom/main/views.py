@@ -45,3 +45,9 @@ def msg_confirmation(request):
 
 def direction_map(request):
     return render_to_response("direction_map.html")
+
+def feedback(request):
+    return render_to_response("feedback.html")
+
+def picked_up(request):
+    return render_to_response("picked_up.html")
