@@ -14,5 +14,8 @@ def actions_confirm_request(request,request_id):
 def actions_pickup_request(request,request_id):
     return HttpResponse("Pickup Request Endpoint")
 
-def requests(request):
-	  return render_to_response("requests.html")
+def home(request):
+	  return render_to_response("home.html")
+
+def donation_map(request):
+	  return render_to_response("donation_map.html")
