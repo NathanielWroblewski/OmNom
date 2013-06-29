@@ -5,6 +5,21 @@ from twilio.rest import TwilioRestClient
 from django.conf import settings
 from main.models import PickupRequest
 
+def create_pickup_request(request):
+    if request.method=="POST":
+        new_request = PickupRequest(
+            description = request.POST.get("description",""),
+            latitude=request.POST.get("latitude",0),
+            longitude=request.POST.get("longitude",0),
+            requester=request.user
+        )
+        new_request.save()
+
+    all_requests = PickupRequest.objects.all();
+
+    return render_to_response("create_request.html",{'all_requests':all_requests},RequestContext(request))
+                  
+
 def test_page(request):
     return render_to_response("test-page.html",{'myvar':"OMNOM"},RequestContext(request))
 

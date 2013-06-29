@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>My Requests</h2>
+<table>
+  <thead>
+    <th>Description</th>
+    <th>Latitude</th>
+    <th>Longitude</th>
+  </thead>
+  <tr>
+    {% for r in all_requests %}
+    <td>{{r.description}}</td>
+    <td>{{r.latitude}}</td>
+    <td>{{r.longitude}}</td>
+  </tr>
+  {% endfor %}
+</table>
+<form id="request-form" action="{% url 'create_pickup_request' %}"
+      method = "POST"
+      >
+  {% csrf_token %}
+
+  <h1>Create a request</h1>
+  <textarea name="description" placeholder="Description Here" ></textarea>
+  <input type="hidden" name="latitude" />
+  <input type="hidden" name="longitude" />  
+
+  <input type="submit" value="Create Request"/>
+</form>
+
+<script>
+{% include "js/get_geolocation.js" %}
+</script>
+
+{% endblock %}
