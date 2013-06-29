@@ -15,4 +15,6 @@ urlpatterns = patterns('main.views',
                        url(r'^create_pickup_request/$', 'create_pickup_request',name="create_pickup_request"),
                        url(r'^messenger/feedback$', 'feedback',name="feedback"),
                        url(r'^messenger/picked_up$', 'picked_up',name="picked_up"),
+                       url(r'^donator/$', 'picked_up',name="picked_up"),
+                       url(r'^$', 'sign_in',name="sign_in"),
 )

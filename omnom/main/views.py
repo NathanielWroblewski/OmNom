@@ -66,3 +66,6 @@ def feedback(request):
 
 def picked_up(request):
     return render_to_response("picked_up.html")
+
+def sign_in(request):
+    return render_to_response("sign_in.html")
