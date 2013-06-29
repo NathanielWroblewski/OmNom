@@ -9,7 +9,7 @@ class PickupRequest(models.Model):
     requester = models.ForeignKey(User,related_name="requests")
 
     is_fulfilled = models.BooleanField(default=False)
-    fulfilled_by = models.ForeignKey(User,related_name="fulfilled_requests")
+    fulfilled_by = models.ForeignKey(User,related_name="fulfilled_requests",null=True,blank=True)
     is_picked_up = models.BooleanField(default=False)
 
     created = models.DateTimeField(auto_now_add=True)
