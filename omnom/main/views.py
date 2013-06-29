@@ -13,3 +13,17 @@ def actions_confirm_request(request,request_id):
 
 def actions_pickup_request(request,request_id):
     return HttpResponse("Pickup Request Endpoint")
+
+def home(request):
+	  return render_to_response("home.html")
+
+def donation_map(request):
+	  return render_to_response("donation_map.html")
+
+def requests(request):
+	return render_to_response("requests.html")
+
+def get_pic_url(request):
+    picurl = "https://graph.facebook.com/%s/picture" % request.user.username
+    return render_to_response("person.html", {'picurl':picurl})
+
