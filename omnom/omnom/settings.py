@@ -15,7 +15,7 @@ MANAGERS = ADMINS
 relative = lambda *x: os.path.join(os.path.abspath(os.path.dirname(__file__)), *x)
 
 DATABASES = {
-    'default': dj_database_url.config(default='sqlite:///' + os.path.abspath('db.sqlite')), 
+    'default': dj_database_url.config(default='sqlite:///' + os.path.abspath('db.sqlite')),
 }
 
 
@@ -159,3 +159,5 @@ LOGGING = {
 FACEBOOK_APP_ID = '141334812733639'
 FACEBOOK_API_SECRET = 'ee346936bdc33641fb681468682417be'
 LOGIN_REDIRECT_URL = '/'
+
+from local_settings import *

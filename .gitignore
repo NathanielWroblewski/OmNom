@@ -1,4 +1,5 @@
 myenv
 omnom/db.sqlite
+omnom/omnom/local_settings.py
 *pyc
 *~

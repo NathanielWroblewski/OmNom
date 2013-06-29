@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div data-role="header">
+    <h1>Confirmation of Pick-up</h1>
+  </div>
+  
+  <div data-role="content">
+    <img src="">
+    <p>Image goes here</p>
+    <h1>Donator Name</h1>
+    <p>Address<p>
+    <p>Phone</p>
+    <p>Donator Description</p>
+    <form>
+      <label>ETA:</label>
+      <select>
+        <option value="10">10 minutes</option>
+        <option value="20">20 minutes</option>
+        <option value="30">30 minutes</option>
+        <option value="40">40 minutes</option>
+        <option value="50">50 minutes</option>
+        <option value="60">60 minutes</option>
+      </select>
+    </form>
+
+
+  	<form>
+  		<a href="/messenger/direction_map" data-role="button">
+  			Confirm
+  		</a>
+  		<a href="/messenger/donation_map" data-role="button">
+  			Back
+  		</a>
+  	</form>
+  </div>
+{% endblock %}
