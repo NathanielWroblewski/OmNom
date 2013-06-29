@@ -1,10 +1,6 @@
 from django.conf.urls import patterns, include, url
 
-# Uncomment the next two lines to enable the admin:
-# from django.contrib import admin
-# admin.autodiscover()
-
-urlpatterns = patterns('main.views',
-    url(r'', include('social_auth.urls')),
-    url(r'^$', 'temp_page'),
+urlpatterns = patterns('',
+                       url(r'', include('social_auth.urls')),
+                       url(r'', include('main.urls')),
 )
