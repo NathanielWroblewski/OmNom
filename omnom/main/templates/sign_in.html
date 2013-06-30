@@ -6,7 +6,7 @@
   
   <div data-role="content">
   	<form>
-  	  <a href="/home" data-role="button">
+  	  <a href="{% url 'socialauth_begin' 'facebook' %}" data-ajax="false" data-role="button">
         Sign in with facebook
       </a>
     </form>
