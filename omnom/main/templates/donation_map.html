@@ -1,36 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
 
-  <div data-role="header">
-    <h1>Donations Near You</h1>
+<div data-role="header" >
+  <h1>Donations Near You</h1>
+</div>
+
+<div data-role="content" data-fullscreen="true">
+  <div id="donation-map"
+       style="height:100%;width:100%;position:absolute;margin-left:-15px;margin-top:-15px;"
+       data-markers='[{% for request in all_requests %}[{{request.latitude}},{{request.longitude}}, "{{request.created}}", {{request.id}}, "{{request.description}}"]{% if not forloop.last %},{% endif %}{% endfor %}]'
+       >
   </div>
-
-  <div data-role="content">
-  	<div id="donation-map"
-	     style="height:425px;width:100%;margin:-15px;"
-	     data-markers='[{% for request in all_requests %}[{{request.latitude}},{{request.longitude}}, "{{request.created}}", {{request.id}}, "{{request.description}}"]{% if not forloop.last %},{% endif %}{% endfor %}]'
-	     >
-	</div>
-    <a href="/messenger/confirmation" data-role="button">
-      To Confirmation Page
-    </a>
-    <table>
-      <thead>
-        <th>Description</th>
-        <th>Latitude</th>
-        <th>Longitude</th>
-      </thead>
-      {% for r in all_requests %}
-      <tr>
-
-          <td><a href="{% url 'msg_confirmation' r.id %}">{{r.description}}</a></td>
-
-        <td>{{r.latitude}}</td>
-        <td>{{r.longitude}}</td>
-      </tr>
-      {% endfor %}
-    </table>
-  </div>
+</div>
 
 {% endblock %}
 
