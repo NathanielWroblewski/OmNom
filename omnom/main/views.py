@@ -8,12 +8,30 @@ from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.contrib.auth import logout as auth_logout
+from django.contrib.auth.decorators import user_passes_test 
 
-@login_required
+
+def register_required(function=None, login_url=None):
+    """
+    Decorator for views that checks that the user is logged in, redirecting
+    to the log-in page if necessary.
+    """
+    actual_decorator = user_passes_test(
+            lambda u: u.get_profile().phone_number!="", 
+        login_url="my_profile",
+        #redirect_field_name=redirect_field_name
+    )
+    if function:
+        return actual_decorator(function)
+    return actual_decorator
+
+
+
 def logout(request):
     auth_logout(request)
     return redirect("/")
 
+@register_required
 @login_required
 def create_pickup_request(request):
     if request.method != "POST":
@@ -29,6 +47,7 @@ def create_pickup_request(request):
     new_request.save()
     return redirect("/create_pickup_request")
 
+@register_required
 @login_required
 def actions_fulfill_request(request,request_id):
     try:
@@ -42,6 +61,7 @@ def actions_fulfill_request(request,request_id):
 
     return redirect(reverse('direction_map'))
 
+@register_required
 @login_required
 def actions_confirm_request(request,request_id):
     return HttpResponse("Confirm Request Endpoint")
@@ -68,10 +88,12 @@ def twilio_callback(request):
         return HttpResponse("User profile does not exist %s" % from_)
     return HttpResponse("Twilio Callback")
 
+@register_required
 @login_required
 def actions_pickup_request(request,request_id):
     return HttpResponse("Pickup Request Endpoint")
 
+@register_required
 @login_required
 def home(request):
     return render_to_response("home.html",RequestContext(request))
@@ -96,6 +118,7 @@ def donation_map(request):
     all_requests = PickupRequest.objects.all()
     return render_to_response("donation_map.html", {"all_requests": all_requests},RequestContext(request))
 
+@register_required
 @login_required
 def requests(request):
 	return render_to_response("requests.html",RequestContext(request))
