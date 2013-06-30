@@ -3,10 +3,10 @@
 #logo {width: 300px;}
 #sign_in_button { width: 300px; height: 340px;}
 
-#base-page {
+/*#base-page {
 	background: url('images/bluebackground.png') 90%;
 }
-
+*/
 #base-page .ui-btn {
 	background: url('images/bluebutton1.png') 50% center;
 	height: 68px;
