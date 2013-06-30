@@ -1,0 +1,13 @@
+body#splash-body {background:#F7F7F7;}
+#splash-container {margin-top:60px;}
+
+#learn-more-box {margin-top:10px;border-top:solid medium #333;padding-right:10px;padding-top:10px;}
+#learn-more-box-text {
+    background:#FFF;
+    padding:8px;
+    font-style:italic;
+    font-weight:bold;
+    line-height:15px;
+    font-size:90%;
+}
+#website-images {margin-top:10px;}
