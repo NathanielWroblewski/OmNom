@@ -1,5 +1,6 @@
 # Django settings for omnom project.
 
+AUTH_PROFILE_MODULE = "main.UserProfile"
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
