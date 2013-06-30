@@ -26,8 +26,8 @@ img#profile-picture {
 .pull-right {float:right;}
 .pull-left {float:left;}
 
-#base-page .ui-btn[data-rel=back] {height:30px;line-height:15px;}
-#base-page .ui-btn[data-rel=back] span {font-size:14px;color:#FFF;}
+/*#base-page .ui-btn[data-rel=back] {height:30px;line-height:15px;}
+#base-page .ui-btn[data-rel=back] span {font-size:14px;color:#FFF;}*/
 
 #base-page .ui-btn .icon-large {font-size:125%;line-height:100%;}
 #base-page .ui-btn span {
