@@ -16,7 +16,7 @@ class Migration(SchemaMigration):
             ('longitude', self.gf('django.db.models.fields.FloatField')()),
             ('requester', self.gf('django.db.models.fields.related.ForeignKey')(related_name='requests', to=orm['auth.User'])),
             ('is_fulfilled', self.gf('django.db.models.fields.BooleanField')(default=False)),
-            ('fulfilled_by', self.gf('django.db.models.fields.related.ForeignKey')(related_name='fulfilled_requests', to=orm['auth.User'])),
+            ('fulfilled_by', self.gf('django.db.models.fields.related.ForeignKey')(blank=True, related_name='fulfilled_requests', null=True, to=orm['auth.User'])),
             ('is_picked_up', self.gf('django.db.models.fields.BooleanField')(default=False)),
             ('created', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
             ('expiry', self.gf('django.db.models.fields.IntegerField')(default=24)),
@@ -34,6 +34,15 @@ class Migration(SchemaMigration):
         ))
         db.send_create_signal(u'main', ['Feedback'])
 
+        # Adding model 'UserProfile'
+        db.create_table(u'main_userprofile', (
+            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('user', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'])),
+            ('phone_number', self.gf('django.db.models.fields.CharField')(max_length=127, null=True, blank=True)),
+            ('donater_description', self.gf('django.db.models.fields.TextField')(null=True, blank=True)),
+        ))
+        db.send_create_signal(u'main', ['UserProfile'])
+
 
     def backwards(self, orm):
         # Deleting model 'PickupRequest'
@@ -41,6 +50,9 @@ class Migration(SchemaMigration):
 
         # Deleting model 'Feedback'
         db.delete_table(u'main_feedback')
+
+        # Deleting model 'UserProfile'
+        db.delete_table(u'main_userprofile')
 
 
     models = {
@@ -94,13 +106,20 @@ class Migration(SchemaMigration):
             'created': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
             'description': ('django.db.models.fields.TextField', [], {}),
             'expiry': ('django.db.models.fields.IntegerField', [], {'default': '24'}),
-            'fulfilled_by': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'fulfilled_requests'", 'to': u"orm['auth.User']"}),
+            'fulfilled_by': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'fulfilled_requests'", 'null': 'True', 'to': u"orm['auth.User']"}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'is_fulfilled': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'is_picked_up': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'latitude': ('django.db.models.fields.FloatField', [], {}),
             'longitude': ('django.db.models.fields.FloatField', [], {}),
             'requester': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'requests'", 'to': u"orm['auth.User']"})
+        },
+        u'main.userprofile': {
+            'Meta': {'object_name': 'UserProfile'},
+            'donater_description': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'phone_number': ('django.db.models.fields.CharField', [], {'max_length': '127', 'null': 'True', 'blank': 'True'}),
+            'user': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['auth.User']"})
         }
     }
 

@@ -1,0 +1,10 @@
+#base-page {
+	background: url('images/bluebackground.png') 90%;
+}
+
+#base-page .ui-btn {
+	background: url('images/bluebutton1.png') 50% center;
+	height: 68px;
+	line-height:45px;
+
+}
