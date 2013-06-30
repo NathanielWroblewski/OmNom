@@ -120,5 +120,8 @@ def my_profile(request):
     picurl = "https://graph.facebook.com/%s/picture?type=large" % request.user.username
     return render_to_response("my_profile.html", {'picurl':picurl},RequestContext(request))
 
+def confirm_pick_up(request):
+    return render_to_response("confirm_pick_up.html", RequestContext(request))
+
 def sign_in(request):
     return render_to_response("sign_in.html",RequestContext(request))
