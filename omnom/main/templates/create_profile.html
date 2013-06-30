@@ -16,5 +16,16 @@
     <textarea name="donater_description" placeholder="Describe yourself"></textarea>
     <input type="submit" value="Create your profile"/>
   </form>
+  <!-- HACK FIXME -->
+  <table>
+    <thead>
+      <th>Phone Number</th>
+      <th>Donater Description</th>
+    </thead>
+    <tr>
+      <td>{{user_profile.phone_number}}</td>
+      <td>{{user_profile.donater_description}}</td>
+    </tr>
+  </table>
 </div>
 {% endblock %}
