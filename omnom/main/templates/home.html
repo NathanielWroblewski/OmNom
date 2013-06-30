@@ -1,20 +1,20 @@
 {% extends 'base.html' %}
 {% block content %}
-  <div data-role="header">
-    <h1>Feed & Gain</h1>
-  </div>
+<div data-role="header">
+  <h1>Feed & Gain</h1>
+</div>
 
-  <!-- FIXME -->
-  <div data-role="content">
-    <form>
-  		<a href="/messenger/donation_map" data-role="button">
-  			Search Donations
-  		</a>
-  		<a href="{% url 'create_pickup_request' %}" data-role="button">
-  			New Donation
-  		</a>
-      <a href="{% url 'create_profile' %}" data-role="button">
-        Create Profile
+<!-- FIXME -->
+<div data-role="content">
+  <form>
+    <a href="/messenger/donation_map" data-role="button">
+      Search Donations
+    </a>
+    <a href="{% url 'create_pickup_request' %}" data-role="button">
+      New Donation
+    </a>
+    <a href="{% url 'create_profile' %}" data-role="button">
+      Create Profile
       <a href="{% url 'my_profile'  %}" data-role="button">
         My Profile
       </a>
@@ -24,6 +24,6 @@
       <a href="/logout" data-role="button">
         Logout
       </a>
-  	</form>
-  </div>
+  </form>
+</div>
 {% endblock %}
