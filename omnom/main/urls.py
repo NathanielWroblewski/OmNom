@@ -18,5 +18,6 @@ urlpatterns = patterns('main.views',
                        url(r'^messenger/picked_up$', 'picked_up',name="picked_up"),
                        url(r'^donator/new_donation$', 'new_donation',name="new_donation"),
                        url(r'^donator/$', 'picked_up',name="picked_up"),
+                       url(r'^my_profile/$', 'my_profile',name="my_profile"),
                        url(r'^$', 'sign_in',name="sign_in"),
 )

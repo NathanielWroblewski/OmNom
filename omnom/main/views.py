@@ -99,6 +99,12 @@ def feedback(request):
 def picked_up(request):
     return render_to_response("picked_up.html",RequestContext(request))
 
+
+def my_profile(request):
+    return render_to_response("my_profile.html",RequestContext(request))
+
+
+
 def sign_in(request):
     return render_to_response("sign_in.html",RequestContext(request))
 
