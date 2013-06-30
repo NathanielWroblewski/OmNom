@@ -97,7 +97,7 @@ def requests(request):
 @login_required
 def get_pic_url(request):
     picurl = "https://graph.facebook.com/%s/picture" % request.user.username
-    return render_to_response("person.html", {'picurl':picurl})
+    return render_to_response("person.html", {'picurl':picurl},RequestContext(request))
 
 @login_required
 def msg_confirmation(request):
@@ -115,9 +115,10 @@ def feedback(request):
 def picked_up(request):
     return render_to_response("picked_up.html",RequestContext(request))
 
-
+@login_required
 def my_profile(request):
-    return render_to_response("my_profile.html",RequestContext(request))
+    picurl = "https://graph.facebook.com/%s/picture?type=large" % request.user.username
+    return render_to_response("my_profile.html", {'picurl':picurl},RequestContext(request))
 
 def confirm_pick_up(request):
     return render_to_response("confirm_pick_up.html", RequestContext(request))
