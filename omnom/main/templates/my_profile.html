@@ -21,14 +21,14 @@
     <p>{{ user_profile.phone_number }}</p>
     <p>{{ user_profile.donator_description }}</p>
 
-    <h2>My deliveries</h2>
-    {% for delivery in user_deliveries %}
-    <p>{{delivery.description}}</p>
+    <h2>Open Donations</h2>
+    {% for donation in open_donations %}
+    <a href="#" data-role="button">{{donation.description}}</a>
     {% endfor %}
 
-    <h2>My donations</h2>
-    {% for donation in user_donations %}
-    <p>{{donation.description}}</p>
+    <h2>Closed donations</h2>
+    {% for donation in closed_donations %}
+    <a href="#" data-role="button">{{donation.description}}</a>
     {% endfor %}
 
     <input type="submit" value="Save"/>

@@ -132,10 +132,10 @@ def picked_up(request):
 def my_profile(request):
     user = request.user
     user_profile = UserProfile.objects.get(user_id=user.id)
-    user_donations = PickupRequest.objects.filter(requester=user)
-    user_deliveries = PickupRequest.objects.filter(fulfilled_by=user)
+    open_donations = PickupRequest.objects.filter(requester=user, fulfilled_by__isnull=True)
+    closed_donations = PickupRequest.objects.filter(requester=user, fulfilled_by__isnull=False)
     picurl = "https://graph.facebook.com/%s/picture?type=large" % request.user.username
-    return render_to_response("my_profile.html",{'picurl':picurl, "user": user, "user_profile": user_profile, "user_donations": user_donations, "user_deliveries": user_deliveries},RequestContext(request))
+    return render_to_response("my_profile.html",{'picurl':picurl, "user": user, "user_profile": user_profile, "open_donations": open_donations, "closed_donations": closed_donations},RequestContext(request))
 
 def confirm_pick_up(request):
     return render_to_response("confirm_pick_up.html", RequestContext(request))
