@@ -7,16 +7,13 @@
 <!-- FIXME -->
 <div data-role="content">
 
-  <form id="request-form" action="{% url 'create_profile' %}"
-  method = "POST">
+  <form id="request-form" action="{% url 'create_profile' %}" method = "POST">	
     {% csrf_token %}
 
-    <h1>Create your profile</h1>
     <input type="text" name="phone_number" placeholder="+14152152139" ></input>
     <textarea name="donater_description" placeholder="Describe yourself"></textarea>
     <input type="submit" value="Create your profile"/>
   </form>
-  <!-- HACK FIXME -->
   <table>
     <thead>
       <th>Phone Number</th>

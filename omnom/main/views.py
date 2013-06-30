@@ -87,17 +87,13 @@ def home(request):
 
 @login_required
 def create_profile(request):
+    user_profile = request.user.get_profile()
     if request.method == "POST":
-        user_profile = UserProfile(
-                phone_number=request.POST.get("phone_number"),
-                user=request.user,
-                donater_description=request.POST.get("donater_description"),
-                )
+        user_profile.phone_number = request.POST.get("phone_number")
+        user_profile.donater_description = request.POST.get("donater_description")
         user_profile.save()
         return redirect("/")
     else:
-        # """HACK FIXME"""
-        # user_profile = UserProfile.objects.get(user_id=request.user.id);
         return render_to_response("create_profile.html",{'user_profile':user_profile},RequestContext(request))
 
 @login_required
