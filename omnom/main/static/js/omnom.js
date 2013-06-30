@@ -1,7 +1,5 @@
 
-$(document).ready(function() {
-    init()
-});
+$(document).on("pageinit",function(event) {init()});
 
 function drawMap(container,overrideOptions,callback) {
     if(typeof(overrideOptions)==='undefined') overrideOptions = {};
