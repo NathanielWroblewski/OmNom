@@ -7,31 +7,23 @@
 <!-- FIXME -->
 <div data-role="content">
 
-  <form id="request-form" action="{% url 'create_profile' %}"
-  method = "POST">
-    {% csrf_token %}
+ <div id="profile-name"><h2>{{ user.first_name }} {{ user.last_name }}</h2>
+  <a href="url">Edit +</a></div>
+ <hr></hr>
+ <img id="profile-picture" src="{{picurl}}"/>
 
-   <a href="url">Edit</a>
+ <p>{{ user_profile.phone_number }}</p>
+ <p>{{ user_profile.donator_description }}</p>
 
-
-    <h1>My Profile</h1>
-
-    <img src="{{picurl}}" style="width:90%;height:30%" />
-    <h1>{{ user.first_name }} {{ user.last_name }}</h1>
-    <p>{{ user_profile.phone_number }}</p>
-    <p>{{ user_profile.donator_description }}</p>
-
-    <h2>Open Donations</h2>
-    {% for donation in open_donations %}
-    <a href="#" data-role="button">{{donation.description}}</a>
-    {% endfor %}
-
-    <h2>Closed donations</h2>
-    {% for donation in closed_donations %}
-    <a href="#" data-role="button">{{donation.description}}</a>
-    {% endfor %}
-
-    <input type="submit" value="Save"/>
-  </form>
+ <h2>Open Donations</h2>
+ {% for donation in open_donations %}
+ <a href="#" data-role="button" data-corners="false" data-shadow="false">{{donation.description}}</a>
+ {% endfor %}
+ <hr></hr>
+ <h2>Closed donations</h2>
+ {% for donation in closed_donations %}
+ <a href="#" data-role="button" data-corners="false" data-shadow="false">{{donation.description}}</a>
+ {% endfor %}
+ <hr></hr>
 </div>
 {% endblock %}

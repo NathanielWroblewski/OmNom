@@ -12,7 +12,15 @@
 	height: 68px;
 	line-height:35px;
 	text-align:left;
+}
 
+img#profile-picture {
+  width: 100%;
+  height: 170px;
+}
+
+#profile-name h2, a{
+  display: inline-block;
 }
 
 .pull-right {float:right;}
