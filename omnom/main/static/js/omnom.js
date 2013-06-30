@@ -55,7 +55,7 @@ function init() {
             title: 'Hello World!'
           });
           var infoWindow = new google.maps.InfoWindow({
-            content: "Donation posted at:" +markerElement[2]
+          content: "<a href='/messenger/confirmation/" + markerElement[3] + "'>"+ markerElement[4] +"</a>" + "<br> Donation posted at:" +markerElement[2]
           });
 
           google.maps.event.addListener(marker, 'click', function(){
