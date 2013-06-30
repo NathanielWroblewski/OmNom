@@ -47,21 +47,21 @@ def actions_fulfill_request(request,request_id):
         donnor_phone_number = UserProfile.objects.get(id=pickup_request.requester.id).phone_number
         volunteer = request.user
 
-        client = TwilioRestClient(settings.TWILIO_ACCOUNT_SID, 
+        client = TwilioRestClient(settings.TWILIO_ACCOUNT_SID,
                                   settings.TWILIO_AUTH_TOKEN)
         message = client.sms.messages.create(
-            to=donnor_phone_number, 
-            from_="+17202599396", 
+            to=donnor_phone_number,
+            from_="+17202599396",
             body=CONFIRMATION_TEXT % (request.POST.get("minutes",10),
                                       volunteer.id,
                                       pickup_request.id))
-  
+
     except PickupRequest.DoesNotExist:
         return HttpResponse("Pickup request does not exist %s" % request_id)
     except UserProfile.DoesNotExist:
         return HttpResponse("User Profile not found")
 
-    return redirect(reverse('direction_map'))
+    return redirect(reverse('thank_you'))
 
 
 @login_required
@@ -131,9 +131,9 @@ def get_pic_url(request):
     return render_to_response("person.html", {'picurl':picurl},RequestContext(request))
 
 @login_required
-def msg_confirmation(request, request_id):    
+def msg_confirmation(request, request_id):
     pickup_request = get_object_or_404(PickupRequest,pk=request_id)
-    return render_to_response("msg_confirmation.html", 
+    return render_to_response("msg_confirmation.html",
                               {'pickup_request': pickup_request},
                               RequestContext(request))
 
@@ -163,3 +163,6 @@ def confirm_pick_up(request):
 
 def sign_in(request):
     return render_to_response("sign_in.html",RequestContext(request))
+
+def thank_you(request):
+    return render_to_response("thank_you.html", RequestContext(request))

@@ -22,4 +22,5 @@ urlpatterns = patterns('main.views',
                        url(r'^logout/$', 'logout',name='logout'),
                        url(r'^my_profile/$', 'my_profile',name="my_profile"),
                        url(r'^donator/confirm_pick_up/$', 'confirm_pick_up',name="confirm_pick_up"),
+                       url(r'^thank_you/$', 'thank_you',name="thank_you"),
 )
