@@ -160,5 +160,17 @@ FACEBOOK_APP_ID = '141334812733639'
 FACEBOOK_API_SECRET = 'ee346936bdc33641fb681468682417be'
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = "/sign-in/"
+GOOGLE_MAPS_API_KEY = "AIzaSyDXbLTiAjkARVoImvIhrT665H1TocU7vEg"
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.static",
+    "django.core.context_processors.tz",
+    "django.contrib.messages.context_processors.messages",
+    "main.context_processors.google_maps",
+)
 
 from local_settings import *
