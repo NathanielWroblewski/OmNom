@@ -3,11 +3,28 @@
   <div data-role="header">
     <h1>Donations Near You</h1>
   </div>
-  
+
   <div data-role="content">
   	Pretend I'm a map!
     <a href="/messenger/confirmation" data-role="button">
       To Confirmation Page
     </a>
+    <table>
+      <thead>
+        <th>Description</th>
+        <th>Latitude</th>
+        <th>Longitude</th>
+      </thead>
+      {% for r in all_requests %}
+      <tr>
+
+          <td><a href="{% url 'msg_confirmation' r.id %}">{{r.description}}</a></td>
+
+        <td>{{r.latitude}}</td>
+        <td>{{r.longitude}}</td>
+      </tr>
+      {% endfor %}
+    </table>
   </div>
 {% endblock %}
+
