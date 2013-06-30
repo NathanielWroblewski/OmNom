@@ -19,4 +19,5 @@ urlpatterns = patterns('main.views',
                        url(r'^donator/$', 'picked_up',name="picked_up"),
                        url(r'^sign-in/$', 'sign_in',name="sign_in"),
                        url(r'^logout/$', 'logout',name='logout'),
+                       url(r'^my_profile/$', 'my_profile',name="my_profile"),
 )
