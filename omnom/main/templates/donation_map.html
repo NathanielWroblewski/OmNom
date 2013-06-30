@@ -1,13 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
+
   <div data-role="header">
     <h1>Donations Near You</h1>
   </div>
 
   <div data-role="content">
-  	<div id="donation-map" 
+  	<div id="donation-map"
 	     style="height:425px;width:100%;margin:-15px;"
-	     data-markers="[{% for request in all_requests %}[{{request.latitude}},{{request.longitude}}]{% if not forloop.last %},{% endif %}{% endfor %}]"
+	     data-markers='[{% for request in all_requests %}[{{request.latitude}},{{request.longitude}}, "{{request.created}}"]{% if not forloop.last %},{% endif %}{% endfor %}]'
 	     >
 	</div>
     <a href="/messenger/confirmation" data-role="button">
