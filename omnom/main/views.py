@@ -73,9 +73,8 @@ def create_profile(request):
         return redirect("/")
     else:
         """HACK FIXME"""
-        user_profile = UserProfile.objects.all();
-        return render_to_response("create_profile.html",{'all_requests':all_requests},RequestContext(request))
-
+        user_profile = UserProfile.objects.get(user_id=request.user.id);
+        return render_to_response("create_profile.html",{'user_profile':user_profile},RequestContext(request))
 
 def donation_map(request):
 	return render_to_response("donation_map.html",RequestContext(request))
@@ -107,6 +106,3 @@ def my_profile(request):
 
 def sign_in(request):
     return render_to_response("sign_in.html",RequestContext(request))
-
-def new_donation(request):
-    return render_to_response("new_donation",RequestContext(request))
