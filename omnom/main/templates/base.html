@@ -12,13 +12,20 @@
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key={{GOOGLE_MAPS_API_KEY}}&sensor=true"></script>
 	<link rel="stylesheet" href="{{STATIC_URL}}css/app.css" type="text.css" />
 	<style>
-	  .pull-left {float:left;}
-	  .pull-right {float:right;}
+	.pull-left {float:left;}
+	.pull-right {float:right;}
 	</style>
 
 </head>
 <body>
 	<div id="base-page" data-role="page" data-add-back-btn="true">
+
+		<div data-role="header" style="background: white">
+			<hr style="height: 5px; background: black">
+			<img src="{{STATIC_URL}}/css/images/logo" style="width:50%;height:25%; margin-left:5px">
+			<img src="{{STATIC_URL}}/css/images/blackbutton.jpg" style="width:10%;float:right;margin-right:5px">
+		</div>
+
 		{% block content %}
 		{% endblock %}
 	</div>
