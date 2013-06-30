@@ -119,7 +119,8 @@ def picked_up(request):
 def my_profile(request):
     return render_to_response("my_profile.html",RequestContext(request))
 
-
+def confirm_pick_up(request):
+    return render_to_response("confirm_pick_up.html", RequestContext(request))
 
 def sign_in(request):
     return render_to_response("sign_in.html",RequestContext(request))
