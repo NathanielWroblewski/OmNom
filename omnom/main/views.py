@@ -14,7 +14,6 @@ def logout(request):
     auth_logout(request)
     return redirect("/")
 
-
 @login_required
 @register_required
 def create_pickup_request(request):
@@ -103,7 +102,7 @@ def create_profile(request):
 
 @login_required
 def donation_map(request):
-    all_requests = PickupRequest.objects.all()
+    all_requests = PickupRequest.objects.filter(fulfilled_by__isnull=True)
     return render_to_response("donation_map.html", {"all_requests": all_requests},RequestContext(request))
 
 
