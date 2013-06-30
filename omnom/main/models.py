@@ -28,5 +28,9 @@ class UserProfile(models.Model):
     phone_number = models.CharField(max_length=127,null=True,blank=True)
     donater_description = models.TextField(null=True, blank=True) #not required
 
+    @property
+    def reputation(self):
+        return 5
+
 
 from main.receivers import *

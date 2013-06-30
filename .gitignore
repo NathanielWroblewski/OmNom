@@ -4,3 +4,4 @@ omnom/omnom/local_settings.py
 *pyc
 *~
 .DS_STORE
+main/migrations

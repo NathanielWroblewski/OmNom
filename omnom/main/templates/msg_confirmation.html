@@ -1,20 +1,32 @@
 {% extends 'base.html' %}
+{% load main_tags %}
 {% block content %}
+
 
 <div data-role="header">
   <h1>Confirmation of Pick-up</h1>
 </div>
 
 <div data-role="content">
-  <img src="">
-  <p>Image goes here</p>
-  <h1>Donator Name</h1>
-  <p>Address<p>
-  <p>Phone</p>
-  <p>Reputation</p>
-  <p>Donator Description</p>
+  <div class="pull-left">
+    <h1>{{pickup_request.requester.get_full_name}}</h1>
+    <p>{{pickup_request.requester.get_profile.phone_number}}</p>
+    <p>
+      {% for i in pickup_request.requester.get_profile.reputation|get_range %}
+      &#9733;
+      {% endfor %}
+    </p>
+
+    {% if pickup_request.requester.donater_description %}
+    <p>{{pickup_request.requester.donater_description}}</p>
+    {% endif %}
+
+  </div>
+  <div class="pull-right">
+    <img style="width:200px" src="http://graph.facebook.com/{{pickup_request.requester.username}}/picture?type=large" />
+  </div>
+  <div style="clear:both"></div>
   <form>
-    <label>ETA:</label>
     <select>
       <option value="10">10 minutes</option>
       <option value="20">20 minutes</option>
@@ -27,7 +39,7 @@
 
 
   <form>
-    <a href="{% url 'actions_fulfill_request' request_id %}" data-role="button">
+    <a href="{% url 'actions_fulfill_request' pickup_request.id %}" data-role="button">
       Confirm
     </a>
     <a href="/messenger/donation_map" data-role="button">

@@ -1,5 +1,5 @@
 from django.http import HttpResponse, Http404
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from twilio.rest import TwilioRestClient
 from django.conf import settings
@@ -113,8 +113,11 @@ def get_pic_url(request):
     return render_to_response("person.html", {'picurl':picurl},RequestContext(request))
 
 @login_required
-def msg_confirmation(request, request_id):
-	return render_to_response("msg_confirmation.html", {'request_id': request_id},RequestContext(request))
+def msg_confirmation(request, request_id):    
+    pickup_request = get_object_or_404(PickupRequest,pk=request_id)
+    return render_to_response("msg_confirmation.html", 
+                              {'pickup_request': pickup_request},
+                              RequestContext(request))
 
 @login_required
 def direction_map(request):
