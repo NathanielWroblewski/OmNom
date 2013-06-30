@@ -16,6 +16,9 @@ def logout(request):
     auth_logout(request)
     return redirect("/")
 
+def splash(request):
+    return render_to_response("splash.html",{},RequestContext(request))
+
 @login_required
 @register_required
 def create_pickup_request(request):
