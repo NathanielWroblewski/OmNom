@@ -2,6 +2,12 @@
 {% load main_tags %}
 {% block content %}
 
+    <div data-role="header" style="background: white">
+      <hr style="height: 5px; background: black">
+      <img src="{{STATIC_URL}}/css/images/logo" style="width:50%;height:25%; margin-left:5px">
+      <img src="{{STATIC_URL}}/css/images/blackbutton.jpg" style="width:10%;float:right;margin-right:5px">
+    </div>
+
 <div data-role="content">
   <div class="pull-left">
     <h1>{{pickup_request.requester.get_full_name}}</h1>
