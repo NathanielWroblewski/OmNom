@@ -27,7 +27,7 @@ def create_pickup_request(request):
         requester=request.user
     )
     new_request.save()
-    return redirect("create_pickup_request")
+    return redirect("/create_pickup_request")
 
 @login_required
 def actions_fulfill_request(request,request_id):
