@@ -101,6 +101,3 @@ def picked_up(request):
 
 def sign_in(request):
     return render_to_response("sign_in.html",RequestContext(request))
-
-def new_donation(request):
-    return render_to_response("new_donation",RequestContext(request))
