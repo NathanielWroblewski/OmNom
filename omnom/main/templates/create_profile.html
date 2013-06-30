@@ -10,7 +10,7 @@
   <form id="request-form" action="{% url 'create_profile' %}" method = "POST">	
     {% csrf_token %}
 
-    <input type="text" name="phone_number" placeholder="+14152152139" ></input>
+    <input type="tel" name="phone_number" placeholder="+14152152139" ></input>
     <textarea name="donater_description" placeholder="Describe yourself"></textarea>
     <button data-shadow="false" data-corners="false" type="submit" >Create you profile <span class="pull-right icon-large">+</span></button>
   </form>

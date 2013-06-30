@@ -27,7 +27,14 @@
   </div>
   <div style="clear:both"></div>
   <form>
-    <select>
+
+  </form>
+
+
+  <form method="POST"
+	action="{% url 'actions_fulfill_request' pickup_request.id %}">
+    {% csrf_token %}
+    <select name="minutes">
       <option value="10">10 minutes</option>
       <option value="20">20 minutes</option>
       <option value="30">30 minutes</option>
@@ -35,16 +42,7 @@
       <option value="50">50 minutes</option>
       <option value="60">60 minutes</option>
     </select>
-  </form>
-
-
-  <form>
-    <a href="{% url 'actions_fulfill_request' pickup_request.id %}" data-role="button">
-      Confirm
-    </a>
-    <a href="/messenger/donation_map" data-role="button">
-      Back
-    </a>
+    <button type="submit" data-role="button">Confirm</button>
   </form>
 </div>
 {% endblock %}

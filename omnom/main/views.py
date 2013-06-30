@@ -2,6 +2,7 @@ from django.http import HttpResponse, Http404
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from twilio.rest import TwilioRestClient
+from twilio import TwilioException
 from django.conf import settings
 from main.models import *
 from django.shortcuts import redirect
@@ -9,6 +10,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.contrib.auth import logout as auth_logout
 from main.utils import register_required
+from main.constants import CONFIRMATION_TEXT
 
 def logout(request):
     auth_logout(request)
@@ -34,14 +36,27 @@ def create_pickup_request(request):
 @login_required
 @register_required
 def actions_fulfill_request(request,request_id):
+    if request.method != "POST":
+        raise Http404
+
     try:
         pickup_request = PickupRequest.objects.get(id=request_id)
         donnor_phone_number = UserProfile.objects.get(id=pickup_request.requester.id).phone_number
         volunteer = request.user
-        client = TwilioRestClient(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
-        message = client.sms.messages.create(to=donnor_phone_number, from_="+17202599396", body="Someone has confirmed that they want to pick up your food! Please reply with %s-%s" % (volunteer.id,pickup_request.id))
+
+        client = TwilioRestClient(settings.TWILIO_ACCOUNT_SID, 
+                                  settings.TWILIO_AUTH_TOKEN)
+        message = client.sms.messages.create(
+            to=donnor_phone_number, 
+            from_="+17202599396", 
+            body=CONFIRMATION_TEXT % (request.POST.get("minutes",10),
+                                      volunteer.id,
+                                      pickup_request.id))
+  
     except PickupRequest.DoesNotExist:
         return HttpResponse("Pickup request does not exist %s" % request_id)
+    except UserProfile.DoesNotExist:
+        return HttpResponse("User Profile not found")
 
     return redirect(reverse('direction_map'))
 
